@@ -321,6 +321,7 @@ export class TestBedViewEngine implements TestBed {
     this._isRoot = true;
     this._rootProviderOverrides = [];
 
+    this._moduleRef.destroy();
     this._moduleRef = null!;
     this._moduleFactory = null!;
     this._compilerOptions = [];

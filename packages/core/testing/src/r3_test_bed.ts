@@ -240,6 +240,8 @@ export class TestBedRender3 implements TestBed {
       this.compiler.restoreOriginalState();
     }
     this._compiler = new R3TestBedCompiler(this.platform, this.ngModule);
+
+    this._testModuleRef?.destroy();
     this._testModuleRef = null;
     this.destroyActiveFixtures();
   }
