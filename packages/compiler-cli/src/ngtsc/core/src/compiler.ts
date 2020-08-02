@@ -9,7 +9,7 @@
 import {Type} from '@angular/compiler';
 import * as ts from 'typescript';
 
-import {ComponentDecoratorHandler, CompilationModel, DirectiveDecoratorHandler, InjectableDecoratorHandler, NgModuleDecoratorHandler, NoopReferencesRegistry, PipeDecoratorHandler, ReferencesRegistry} from '../../annotations';
+import {CompilationModel, ComponentDecoratorHandler, DirectiveDecoratorHandler, InjectableDecoratorHandler, NgModuleDecoratorHandler, NoopReferencesRegistry, PipeDecoratorHandler, ReferencesRegistry} from '../../annotations';
 import {CycleAnalyzer, ImportGraph} from '../../cycles';
 import {ErrorCode, ngErrorCode} from '../../diagnostics';
 import {checkForPrivateExports, ReferenceGraph} from '../../entry_point';
@@ -694,7 +694,9 @@ export class NgCompiler {
 
     const defaultImportTracker = new DefaultImportTracker();
 
-    const compilationModel = this.options.compilationModel === 'prelink' ? CompilationModel.Prelink : CompilationModel.Aot;
+    const compilationModel = this.options.compilationModel === 'prelink' ?
+        CompilationModel.Prelink :
+        CompilationModel.Aot;
 
     // Set up the IvyCompilation, which manages state for the Ivy transformer.
     const handlers: DecoratorHandler<unknown, unknown, unknown>[] = [
